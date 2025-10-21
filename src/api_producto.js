@@ -10,7 +10,7 @@ const FAKEAPI_BASE_URL = "https://fakerestapi.azurewebsites.net/api/v1";
 
 const app = express();
 app.use(cors({
-  origin: 'http://localhost:4200', 
+  origin: 'http://localhost:3000', 
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true 
 }));
@@ -48,7 +48,7 @@ let productos = [
  */
 app.post("/auth", (req, res) => {
   const { username, password } = req.body;
-  if (username === "emilys" && password === "contrasena123") {
+  if (username === "emilys" && password === "emilyspass") {
     const token = jwt.sign({ username }, SECRET_KEY, { expiresIn: "10m" });
     return res.json({ token });
   }
