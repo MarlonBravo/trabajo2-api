@@ -1,0 +1,38 @@
+<div class="activity-list-container">
+  <div class="activity-header">
+    <h2>Lista de Actividades</h2>
+    <button class="btn btn-primary" (click)="onCreate()">Nueva Actividad</button>
+  </div>
+
+  <div class="error-message" *ngIf="error">
+    {{ error }}
+  </div>
+
+  <table class="activity-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Título</th>
+        <th>Fecha Límite</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let activity of activities">
+        <td>{{ activity.id }}</td>
+        <td>{{ activity.title }}</td>
+        <td>{{ activity.dueDate | date:'short' }}</td>
+        <td>{{ activity.completed ? 'Completada' : 'Pendiente' }}</td>
+        <td class="action-buttons">
+          <button class="btn btn-edit" (click)="onEdit(activity.id)">
+            Editar
+          </button>
+          <button class="btn btn-delete" (click)="onDelete(activity.id)">
+            Eliminar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,61 @@
+<div class="activity-form-container">
+  <h2>{{ isEditing ? 'Editar' : 'Nueva' }} Actividad</h2>
+
+  <form (ngSubmit)="onSubmit()" #activityForm="ngForm">
+    <div class="error-message" *ngIf="error">
+      {{ error }}
+    </div>
+
+    <div class="form-group">
+      <label for="title">Título:</label>
+      <input
+        type="text"
+        id="title"
+        name="title"
+        [(ngModel)]="activity.title"
+        required
+        #title="ngModel">
+      <div class="error-message" *ngIf="title.invalid && title.touched">
+        El título es requerido
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="dueDate">Fecha Límite:</label>
+      <input
+        type="datetime-local"
+        id="dueDate"
+        name="dueDate"
+        [(ngModel)]="activity.dueDate"
+        required
+        #dueDate="ngModel">
+      <div class="error-message" *ngIf="dueDate.invalid && dueDate.touched">
+        La fecha límite es requerida
+      </div>
+    </div>
+
+    <div class="form-group checkbox-group">
+      <label for="completed">Completada:</label>
+      <input
+        type="checkbox"
+        id="completed"
+        name="completed"
+        [(ngModel)]="activity.completed">
+    </div>
+
+    <div class="button-group">
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="!activityForm.form.valid">
+        {{ isEditing ? 'Actualizar' : 'Crear' }}
+      </button>
+      <button
+        type="button"
+        class="btn btn-secondary"
+        (click)="onCancel()">
+        Cancelar
+      </button>
+    </div>
+  </form>
+</div>
