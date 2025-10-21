@@ -296,7 +296,7 @@ const swaggerOptions = {
     },
     servers: [
       {
-        url: "http://localhost:3000",
+        url: "https://trabajo2-api.onrender.com/",
       },
     ],
     components: {
@@ -321,7 +321,7 @@ const PORT = process.env.PORT || 3000;
 app.get("/", (req, res) => {
   res.send(`
     <h1>API de Actividades con Auth (JWT)</h1>
-    <p>Documentación interactiva (Swagger UI): <a href="/api-docs">/api-docs</a></p>
+    <p>Documentación interactiva (Swagger UI): <a href="https://fakerestapi.azurewebsites.net/index.html">https://fakerestapi.azurewebsites.net/index.html</a></p>
     <hr>
     <p>👉 Endpoints disponibles:</p>
     <ul>
